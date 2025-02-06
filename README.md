@@ -1,13 +1,13 @@
-# 
+# Review App
 
 ## Model
-www.msaez.io/#/48265118/storming/review
+www.msaez.io/#/48265118/storming/pbc-review
 
 ## Before Running Services
 ### Make sure there is a Kafka server running
 ```
-cd kafka
-docker-compose up
+cd infra
+docker-compose up -d
 ```
 - Check the Kafka messages:
 ```
@@ -29,10 +29,11 @@ cd gateway
 mvn spring-boot:run
 ```
 
+
 ## Test by API
 - review
 ```
- http :8088/reviews id="id"itemId="itemId"rating="rating"text="text"userId="userId"userImg="userImg"
+http :8088/reviews id="id" itemId="itemId" rating="rating" text="text" userId="userId" userImg="userImg"
 ```
 
 
@@ -44,8 +45,10 @@ npm run serve
 ```
 To use as a web component, see the README.md file in the frontend directory
 
+
 ## Test by UI
 Open a browser to localhost:8088
+
 
 ## Required Utilities
 

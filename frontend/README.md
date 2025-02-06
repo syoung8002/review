@@ -25,5 +25,60 @@ npm run start
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## How to use web components for other projects
+
+### Before Using Web Components
+Backend micro-services and API Gateway must be running.
+
+
+### 1. Load Web Components from HTML Files
+To use Web Components built from other projects or HTML files, load the components through the &lt;script&gt; tag.
+
+- Add the required libraries, such as Vuetify, Vue.js, to the &lt;head&gt; tag.
+- Add files of built Web Components within the &lt;body&gt; tag as &lt;script&gt;.
+
+```
+<head>
+    <!-- Vuetify, VueJs -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.min.js"></script>
+</head>
+<body>
+    <!-- built Web Components file -->
+    <script src="http://localhost:8080/review-app.js"></script>
+</body>
+```
+
+### 2. Using Web Components
+
+Built Web Components can be used as HTML tags. Below is an example of using Web Components.
+
+```
+<template>
+    <review-app>
+        <!-- The JSON Object or Javascript Object must be converted to a string using JSON.stringify() -->
+        <review-review-cards :value="JSON.stringify(reviewData)"></review-review-cards>
+    </review-app>
+</template>
+
+<script>
+export default {
+    name: "App",
+    data: () => ({
+        reviewData: {`
+            'rating': 5,
+            'content': 'Very Good'
+        },
+        showReviews: true,
+        showReviewInput: true,
+        detailMode: true
+    })
+}
+</script>
+```
+- The component name and props you want to use must be written in a kebab case.
+- If the prop type you want to deliver is JSON Object or Javascript Object, you must convert it to a string and deliver it.
+
