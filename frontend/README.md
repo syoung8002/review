@@ -14,6 +14,7 @@ npm run serve
 ```
 npm run build
 ```
+Check the review-app.js file was created in the dist directory
 
 ### Serves the built files on port 8080 for local access.
 ```
@@ -28,16 +29,13 @@ npm run lint
 ## How to use web components for other projects
 
 ### Before Using Web Components
-Backend micro-services and API Gateway must be running.
+Backend micro-services, API Gateway, and built review-app files must be running.
 
-
-### 1. Load Web Components from HTML Files
-To use Web Components built from other projects or HTML files, load the components through the &lt;script&gt; tag.
-
-- Add the required libraries, such as Vuetify, Vue.js, to the &lt;head&gt; tag.
+### Load built web component files and required libraries
+- Add the libraries, Vuetify, VueJs, to the &lt;head&gt; tag.
 - Add files of built Web Components within the &lt;body&gt; tag as &lt;script&gt;.
-
 ```
+-- index.html
 <head>
     <!-- Vuetify, VueJs -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
@@ -52,15 +50,18 @@ To use Web Components built from other projects or HTML files, load the componen
 </body>
 ```
 
-### 2. Using Web Components
-
-Built Web Components can be used as HTML tags. Below is an example of using Web Components.
-
+### 2. Using Example
+Built Web Components can be used as HTML tags.
 ```
 <template>
     <review-app>
-        <!-- The JSON Object or Javascript Object must be converted to a string using JSON.stringify() -->
-        <review-review-cards :value="JSON.stringify(reviewData)"></review-review-cards>
+        <!-- The JSON Objectt must be converted to a string using JSON.stringify() -->
+        <review-review-cards
+            :value="JSON.stringify(reviewData)"
+            :show-reviews="showReviews" 
+            :show-review-input="showReviewInput" 
+            :detail-mode="detailMode"
+        ></review-review-cards>
     </review-app>
 </template>
 
@@ -80,5 +81,5 @@ export default {
 </script>
 ```
 - The component name and props you want to use must be written in a kebab case.
-- If the prop type you want to deliver is JSON Object or Javascript Object, you must convert it to a string and deliver it.
+- If the prop type you want to deliver is JSON Object, you must convert it to a string and deliver it.
 
