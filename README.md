@@ -16,12 +16,22 @@ docker-compose exec -it kafka /bin/bash
 cd /bin
 ./kafka-console-consumer --bootstrap-server localhost:9092 --topic
 ```
+### Make sure that it does not conflict with the running port number
+Port number used by review app
+- Frontend: 8080
+- Backend: 8082
+- API Gateway: 8088
+
+In the event of a port number conflict, you must modify the port number in the following files:
+- frontend/package.json
+- review/src/main/resources/application.yml
+- gateway/src/main/resources/application.yml
+
 
 ## Run the backend micro-services
-See the README.md files inside the each microservices directory:
-
+See the README.md files inside the micro-services directory:
 - review
-
+  
 
 ## Run API Gateway (Spring Gateway)
 ```
